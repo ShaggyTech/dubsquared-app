@@ -1,5 +1,4 @@
-<script setup>
-import { ref, watch, computed, onMounted } from "vue";
+<script setup lang="ts">
 import {
   Chart,
   LineElement,
@@ -33,7 +32,7 @@ Chart.register(
 onMounted(() => {
   chart = new Chart(root.value, {
     type: "line",
-    data: props.data,
+    data: props.data as any,
     options: {
       responsive: true,
       maintainAspectRatio: false,

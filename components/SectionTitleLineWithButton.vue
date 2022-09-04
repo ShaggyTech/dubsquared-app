@@ -1,9 +1,5 @@
-<script setup>
+<script setup lang="ts">
 import { mdiCog } from "@mdi/js";
-import { useSlots, computed } from "vue";
-import BaseIcon from "@/components/BaseIcon.vue";
-import BaseButton from "@/components/BaseButton.vue";
-import IconRounded from "@/components/IconRounded.vue";
 
 defineProps({
   icon: {
@@ -23,7 +19,7 @@ const hasSlot = computed(() => useSlots().default);
 <template>
   <section
     :class="{ 'pt-6': !main }"
-    class="mb-6 flex items-center justify-between"
+    class="flex items-center justify-between mb-6"
   >
     <div class="flex items-center justify-start">
       <IconRounded

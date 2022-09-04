@@ -1,10 +1,6 @@
-<script setup>
-import { ref } from "vue";
+<script setup lang="ts">
 import { mdiClose, mdiDotsVertical } from "@mdi/js";
-import { containerMaxW } from "@/configs/config.js";
-import BaseIcon from "@/components/BaseIcon.vue";
-import NavBarMenuList from "@/components/NavBarMenuList.vue";
-import NavBarItemPlain from "@/components/NavBarItemPlain.vue";
+import { containerMaxW } from "~/configs/config.js";
 
 defineProps({
   menu: {

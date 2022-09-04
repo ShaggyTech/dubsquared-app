@@ -1,13 +1,6 @@
-<script setup>
-import { computed, ref } from "vue";
-import { useMainStore } from "@/stores/main";
+<script setup lang="ts">
 import { mdiEye, mdiTrashCan } from "@mdi/js";
-import CardBoxModal from "@/components/CardBoxModal.vue";
-import TableCheckboxCell from "@/components/TableCheckboxCell.vue";
-import BaseLevel from "@/components/BaseLevel.vue";
-import BaseButtons from "@/components/BaseButtons.vue";
-import BaseButton from "@/components/BaseButton.vue";
-import UserAvatar from "@/components/UserAvatar.vue";
+import { useMainStore } from "~/stores/main";
 
 defineProps({
   checkable: Boolean,
@@ -92,7 +85,7 @@ const checked = (isChecked, client) => {
     <span
       v-for="checkedRow in checkedRows"
       :key="checkedRow.id"
-      class="inline-block px-2 py-1 rounded-sm mr-2 text-sm bg-gray-100 dark:bg-slate-700"
+      class="inline-block px-2 py-1 mr-2 text-sm bg-gray-100 rounded-sm dark:bg-slate-700"
     >
       {{ checkedRow.name }}
     </span>
@@ -134,7 +127,7 @@ const checked = (isChecked, client) => {
         </td>
         <td data-label="Progress" class="lg:w-32">
           <progress
-            class="flex w-2/5 self-center lg:w-full"
+            class="flex self-center w-2/5 lg:w-full"
             max="100"
             :value="client.progress"
           >
@@ -167,7 +160,7 @@ const checked = (isChecked, client) => {
       </tr>
     </tbody>
   </table>
-  <div class="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">
+  <div class="p-3 border-t border-gray-100 lg:px-6 dark:border-slate-800">
     <BaseLevel>
       <BaseButtons>
         <BaseButton

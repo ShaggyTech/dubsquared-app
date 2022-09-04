@@ -1,6 +1,5 @@
-<script setup>
-import { computed, ref, onMounted } from "vue";
-import { useMainStore } from "@/stores/main";
+<script setup lang="ts">
+import { useMainStore } from "~/stores/main";
 import {
   mdiAccountMultiple,
   mdiCartOutline,
@@ -10,8 +9,8 @@ import {
   mdiGithub,
   mdiChartPie,
 } from "@mdi/js";
-import * as chartConfig from "@/components/Charts/chart.config.js";
-import LineChart from "@/components/Charts/LineChart.vue";
+import * as chartConfig from "~/components/Charts/chart.config.js";
+import LineChart from "~/components/Charts/LineChart.vue";
 
 const chartData = ref(null);
 
@@ -89,7 +88,6 @@ const transactionBarItems = computed(() => mainStore.history);
               :business="transaction.business"
               :type="transaction.type"
               :name="transaction.name"
-              :account="transaction.account"
             />
           </div>
           <div class="flex flex-col justify-between">

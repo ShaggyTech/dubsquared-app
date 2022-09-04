@@ -1,6 +1,4 @@
-<script setup>
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
+<script setup lang="ts">
 import { mdiAccount, mdiAsterisk } from "@mdi/js";
 
 const form = reactive({

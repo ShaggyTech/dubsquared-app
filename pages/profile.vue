@@ -1,6 +1,5 @@
-<script setup>
-import { reactive } from "vue";
-import { useMainStore } from "@/stores/main";
+<script setup lang="ts">
+import { useMainStore } from "~/stores/main";
 import {
   mdiAccount,
   mdiMail,

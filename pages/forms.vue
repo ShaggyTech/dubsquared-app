@@ -1,5 +1,4 @@
-<script setup>
-import { reactive, ref } from "vue";
+<script setup lang="ts">
 import { mdiBallotOutline, mdiAccount, mdiMail, mdiGithub } from "@mdi/js";
 
 const selectOptions = [

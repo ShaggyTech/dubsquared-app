@@ -1,6 +1,4 @@
-<script setup>
-import { ref, computed } from "vue";
-import { useStyleStore } from "@/stores/style.js";
+<script setup lang="ts">
 import {
   mdiContrastCircle,
   mdiInformation,
@@ -12,47 +10,38 @@ import {
   mdiReload,
   mdiTrendingUp,
 } from "@mdi/js";
+import { useStyleStore } from "~/stores/style.js";
 
 const modalOneActive = ref(false);
-
 const modalTwoActive = ref(false);
-
 const modalThreeActive = ref(false);
 
 const notificationSettingsModel = ref([]);
-
 const notificationsOutline = computed(
   () => notificationSettingsModel.value.indexOf("outline") > -1
 );
 
 const buttonSettingsModel = ref([]);
-
 const buttonsOutline = computed(
   () => buttonSettingsModel.value.indexOf("outline") > -1
 );
-
 const buttonsSmall = computed(
   () => buttonSettingsModel.value.indexOf("small") > -1
 );
-
 const buttonsDisabled = computed(
   () => buttonSettingsModel.value.indexOf("disabled") > -1
 );
-
 const buttonsRounded = computed(
   () => buttonSettingsModel.value.indexOf("rounded") > -1
 );
 
 const pillsSettingsModel = ref(["icon"]);
-
 const pillsOutline = computed(
   () => pillsSettingsModel.value.indexOf("outline") > -1
 );
-
 const pillsSmall = computed(
   () => pillsSettingsModel.value.indexOf("small") > -1
 );
-
 const pillsIcon = computed(() =>
   pillsSettingsModel.value.indexOf("icon") > -1 ? mdiTrendingUp : null
 );

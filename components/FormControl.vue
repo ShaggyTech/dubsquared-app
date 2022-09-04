@@ -1,7 +1,11 @@
-<script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from "vue";
-import { useMainStore } from "@/stores/main";
-import FormControlIcon from "@/components/FormControlIcon.vue";
+<script setup lang="ts">
+import { useMainStore } from "~/stores/main";
+import type { HTMLAttributes } from "vue";
+
+type PropOptions = {
+  key: string | number | symbol;
+  label: string;
+};
 
 const props = defineProps({
   name: {
@@ -29,7 +33,7 @@ const props = defineProps({
     default: null,
   },
   options: {
-    type: Array,
+    type: Object,
     default: null,
   },
   type: {
@@ -141,7 +145,7 @@ if (props.ctrlKFocus) {
     <textarea
       v-else-if="computedType === 'textarea'"
       :id="id"
-      v-model="computedValue"
+      v-model="(computedValue as string)"
       :class="inputElClass"
       :name="name"
       :placeholder="placeholder"
@@ -153,7 +157,7 @@ if (props.ctrlKFocus) {
       ref="inputEl"
       v-model="computedValue"
       :name="name"
-      :inputmode="inputmode"
+      :inputmode="(inputmode as HTMLAttributes['inputmode'])"
       :autocomplete="autocomplete"
       :required="required"
       :placeholder="placeholder"

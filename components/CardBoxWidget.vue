@@ -1,11 +1,5 @@
-<script setup>
+<script setup lang="ts">
 import { mdiCog } from "@mdi/js";
-import CardBox from "@/components/CardBox.vue";
-import NumberDynamic from "@/components/NumberDynamic.vue";
-import BaseIcon from "@/components/BaseIcon.vue";
-import BaseLevel from "@/components/BaseLevel.vue";
-import PillTagTrend from "@/components/PillTagTrend.vue";
-import BaseButton from "@/components/BaseButton.vue";
 
 defineProps({
   number: {
@@ -60,7 +54,7 @@ defineProps({
         <h3 class="text-lg leading-tight text-gray-500 dark:text-slate-400">
           {{ label }}
         </h3>
-        <h1 class="text-3xl leading-tight font-semibold">
+        <h1 class="text-3xl font-semibold leading-tight">
           <NumberDynamic :value="number" :prefix="prefix" :suffix="suffix" />
         </h1>
       </div>

@@ -1,6 +1,4 @@
-<script setup>
-import { computed } from "vue";
-
+<script setup lang="ts">
 const props = defineProps({
   username: {
     type: String,
@@ -33,7 +31,7 @@ const username = computed(() => props.username);
     <img
       :src="avatar"
       :alt="username"
-      class="rounded-full block h-auto w-full max-w-full bg-gray-100 dark:bg-slate-800"
+      class="block w-full h-auto max-w-full bg-gray-100 rounded-full dark:bg-slate-800"
     />
     <slot />
   </div>

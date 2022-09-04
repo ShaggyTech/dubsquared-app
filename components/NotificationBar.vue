@@ -1,10 +1,6 @@
-<script setup>
-import { ref, computed, useSlots } from "vue";
+<script setup lang="ts">
 import { mdiClose } from "@mdi/js";
-import { colorsBgLight, colorsOutline } from "@/configs/colors.js";
-import BaseLevel from "@/components/BaseLevel.vue";
-import BaseIcon from "@/components/BaseIcon.vue";
-import BaseButton from "@/components/BaseButton.vue";
+import { colorsBgLight, colorsOutline } from "~/configs/colors.js";
 
 const props = defineProps({
   icon: {

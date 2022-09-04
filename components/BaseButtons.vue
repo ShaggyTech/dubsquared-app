@@ -1,6 +1,4 @@
-<script>
-import { h, defineComponent } from "vue";
-
+<script lang="ts">
 export default defineComponent({
   name: "BaseButtons",
   props: {

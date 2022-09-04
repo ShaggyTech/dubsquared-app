@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getButtonColor } from "@/configs/colors.js";
+import { getButtonColor } from "~/configs/colors.js";
 
 const props = defineProps({
   label: {

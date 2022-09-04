@@ -1,12 +1,6 @@
-<script setup>
-import { computed, ref } from "vue";
-import { useMainStore } from "@/stores/main";
+<script setup lang="ts">
 import { mdiCheckDecagram } from "@mdi/js";
-import BaseLevel from "@/components/BaseLevel.vue";
-import UserAvatarCurrentUser from "@/components/UserAvatarCurrentUser.vue";
-import CardBox from "@/components/CardBox.vue";
-import FormCheckRadio from "@/components/FormCheckRadio.vue";
-import PillTag from "@/components/PillTag.vue";
+import { useMainStore } from "~/stores/main";
 
 const mainStore = useMainStore();
 

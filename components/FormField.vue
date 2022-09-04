@@ -1,6 +1,4 @@
-<script setup>
-import { computed, useSlots } from "vue";
-
+<script setup lang="ts">
 defineProps({
   label: {
     type: String,
@@ -36,13 +34,13 @@ const wrapperClass = computed(() => {
 
 <template>
   <div class="mb-6 last:mb-0">
-    <label v-if="label" :for="labelFor" class="block font-bold mb-2">{{
+    <label v-if="label" :for="labelFor" class="block mb-2 font-bold">{{
       label
     }}</label>
     <div :class="wrapperClass">
       <slot />
     </div>
-    <div v-if="help" class="text-xs text-gray-500 dark:text-slate-400 mt-1">
+    <div v-if="help" class="mt-1 text-xs text-gray-500 dark:text-slate-400">
       {{ help }}
     </div>
   </div>

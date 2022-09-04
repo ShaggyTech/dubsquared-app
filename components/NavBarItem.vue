@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { mdiChevronUp, mdiChevronDown } from "@mdi/js";
-import { useStyleStore } from "@/stores/style.js";
-import { useMainStore } from "@/stores/main.js";
+import { useStyleStore } from "~/stores/style.js";
+import { useMainStore } from "~/stores/main.js";
 
 const props = defineProps({
   item: {

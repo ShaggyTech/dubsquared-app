@@ -1,7 +1,4 @@
-<script setup>
-import { computed } from "vue";
-import FormCheckRadio from "@/components/FormCheckRadio.vue";
-
+<script setup lang="ts">
 const props = defineProps({
   options: {
     type: Object,
@@ -14,7 +11,8 @@ const props = defineProps({
   type: {
     type: String,
     default: "checkbox",
-    validator: (value) => ["checkbox", "radio", "switch"].includes(value),
+    validator: (value: string) =>
+      ["checkbox", "radio", "switch"].includes(value),
   },
   componentClass: {
     type: String,
@@ -39,7 +37,7 @@ const computedValue = computed({
 
 <template>
   <div
-    class="flex justify-start flex-wrap -mb-3"
+    class="flex flex-wrap justify-start -mb-3"
     :class="{ 'flex-col': isColumn }"
   >
     <FormCheckRadio
@@ -51,7 +49,7 @@ const computedValue = computed({
       :input-value="key"
       :label="value"
       :class="componentClass"
-      class="mr-6 mb-3 last:mr-0"
+      class="mb-3 mr-6 last:mr-0"
     />
   </div>
 </template>

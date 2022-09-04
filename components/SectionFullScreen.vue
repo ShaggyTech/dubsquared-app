@@ -1,17 +1,16 @@
-<script setup>
-import { computed } from "vue";
-import { useStyleStore } from "@/stores/style";
+<script setup lang="ts">
+import { useStyleStore } from "~/stores/style";
 import {
   gradientBgPurplePink,
   gradientBgDark,
   gradientBgPinkRed,
-} from "@/configs/colors.js";
+} from "~/configs/colors.js";
 
 const props = defineProps({
   bg: {
     type: String,
     required: true,
-    validator: (value) => ["purplePink", "pinkRed"].includes(value),
+    validator: (value: string) => ["purplePink", "pinkRed"].includes(value),
   },
 });
 

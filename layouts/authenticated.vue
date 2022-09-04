@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { mdiForwardburger, mdiBackburger, mdiMenu } from "@mdi/js";
-import { useRouter } from "vue-router";
-import menuAside from "@/configs/menuAside.js";
-import menuNavBar from "@/configs/menuNavBar.js";
-import { useMainStore } from "@/stores/main.js";
-import { useLayoutStore } from "@/stores/layout.js";
-import { useStyleStore } from "@/stores/style.js";
+import menuAside from "~/configs/menuAside.js";
+import menuNavBar from "~/configs/menuNavBar.js";
+import { useMainStore } from "~/stores/main.js";
+import { useLayoutStore } from "~/stores/layout.js";
+import { useStyleStore } from "~/stores/style.js";
 
 useMainStore().setUser({
   name: "John Doe",

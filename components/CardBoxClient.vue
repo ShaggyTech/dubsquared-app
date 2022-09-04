@@ -1,10 +1,5 @@
-<script setup>
-import { computed } from "vue";
+<script setup lang="ts">
 import { mdiTrendingDown, mdiTrendingUp, mdiTrendingNeutral } from "@mdi/js";
-import CardBox from "@/components/CardBox.vue";
-import BaseLevel from "@/components/BaseLevel.vue";
-import PillTag from "@/components/PillTag.vue";
-import UserAvatar from "@/components/UserAvatar.vue";
 
 const props = defineProps({
   name: {
@@ -69,7 +64,7 @@ const pillText = computed(() => props.text ?? `${props.progress}%`);
     <BaseLevel>
       <BaseLevel type="justify-start">
         <UserAvatar class="w-12 h-12 mr-6" :username="name" />
-        <div class="text-center md:text-left overflow-hidden">
+        <div class="overflow-hidden text-center md:text-left">
           <h4 class="text-xl text-ellipsis">
             {{ name }}
           </h4>

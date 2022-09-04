@@ -1,6 +1,4 @@
-<script setup>
-import BaseIcon from "@/components/BaseIcon.vue";
-
+<script setup lang="ts">
 defineProps({
   icon: {
     type: String,
@@ -18,6 +16,6 @@ defineProps({
     :path="icon"
     w="w-10"
     :h="h"
-    class="absolute top-0 left-0 z-10 pointer-events-none text-gray-500 dark:text-slate-400"
+    class="absolute top-0 left-0 z-10 text-gray-500 pointer-events-none dark:text-slate-400"
   />
 </template>

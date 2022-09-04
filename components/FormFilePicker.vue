@@ -1,7 +1,5 @@
-<script setup>
+<script setup lang="ts">
 import { mdiUpload } from "@mdi/js";
-import { computed, ref, watch } from "vue";
-import BaseButton from "@/components/BaseButton.vue";
 
 const props = defineProps({
   modelValue: {
@@ -83,7 +81,7 @@ const upload = (event) => {
 </script>
 
 <template>
-  <div class="flex items-stretch justify-start relative">
+  <div class="relative flex items-stretch justify-start">
     <label class="inline-flex">
       <BaseButton
         as="a"
@@ -97,18 +95,16 @@ const upload = (event) => {
       <input
         ref="root"
         type="file"
-        class="absolute top-0 left-0 w-full h-full opacity-0 outline-none cursor-pointer -z-1"
+        class="absolute top-0 left-0 w-full h-full outline-none opacity-0 cursor-pointer -z-1"
         :accept="accept"
         @input="upload"
       />
     </label>
     <div
       v-if="showFilename"
-      class="px-4 py-2 bg-gray-100 dark:bg-slate-800 border-gray-200 dark:border-slate-700 border rounded-r"
+      class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-r dark:bg-slate-800 dark:border-slate-700"
     >
-      <span class="text-ellipsis line-clamp-1">
-        {{ file.name }}
-      </span>
+      <span class="text-ellipsis line-clamp-1"> 'file.name' </span>
     </div>
   </div>
 </template>

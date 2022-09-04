@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useStyleStore } from "@/stores/style.js";
 import { mdiMinus, mdiPlus } from "@mdi/js";
-import { getButtonColor } from "@/configs/colors.js";
+import { getButtonColor } from "~/configs/colors.js";
+import { useStyleStore } from "~/stores/style.js";
 
 const props = defineProps({
   item: {

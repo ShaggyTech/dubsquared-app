@@ -1,5 +1,4 @@
-<script setup>
-import { computed, ref, watch, onMounted } from "vue";
+<script setup lang="ts">
 import numeral from "numeral";
 
 const props = defineProps({

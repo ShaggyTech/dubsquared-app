@@ -1,6 +1,4 @@
-<script setup>
-import BaseIcon from "@/components/BaseIcon.vue";
-
+<script setup lang="ts">
 defineProps({
   label: {
     type: String,
@@ -16,7 +14,7 @@ defineProps({
 
 <template>
   <div
-    class="inline-flex items-center capitalize leading-none"
+    class="inline-flex items-center leading-none capitalize"
     :class="[small ? 'text-xs' : 'text-sm']"
   >
     <BaseIcon

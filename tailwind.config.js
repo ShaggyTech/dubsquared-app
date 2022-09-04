@@ -4,11 +4,15 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: [
+    "./assets/**/*.{vue,js,css}",
+    "./components/**/*.{vue,js}",
     "./composables/**/*.{js,vue,ts}",
-    "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
+    "./server/**/*.{js,ts}",
+    "./plugins/**/*.{js,ts}",
+    "./configs/**/*.{js,ts}",
     "app.vue",
   ],
   darkMode: "class", // or 'media' or 'class'

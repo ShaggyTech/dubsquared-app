@@ -1,15 +1,10 @@
-<script setup>
-import { computed } from "vue";
+<script setup lang="ts">
 import {
   mdiCashMinus,
   mdiCashPlus,
   mdiReceipt,
   mdiCreditCardOutline,
 } from "@mdi/js";
-import CardBox from "@/components/CardBox.vue";
-import BaseLevel from "@/components/BaseLevel.vue";
-import PillTag from "@/components/PillTag.vue";
-import IconRounded from "@/components/IconRounded.vue";
 
 const props = defineProps({
   amount: {

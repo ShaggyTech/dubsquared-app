@@ -1,6 +1,4 @@
-<script setup>
-import { ref, watch } from "vue";
-
+<script setup lang="ts">
 defineProps({
   type: {
     type: String,
