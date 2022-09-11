@@ -1,24 +1,28 @@
 <script setup lang="ts">
-import { useStyleStore } from "~/stores/style.js";
+import { useStyleStore } from '~/stores/style'
 
-defineProps({
-  zIndex: {
-    type: String,
-    default: "z-50",
-  },
-  type: {
-    type: String,
-    default: "flex",
-  },
-});
+// Props and Emits
+export interface Props {
+  zIndex?: string
+  type?: string
+}
+withDefaults(defineProps<Props>(), {
+  zIndex: 'z-50',
+  type: 'flex',
+})
+const emit = defineEmits(['overlay-click'])
 
-const emit = defineEmits(["overlay-click"]);
+// Stores
+const { overlayStyle } = storeToRefs(useStyleStore())
 
-const overlayClick = (event) => {
-  emit("overlay-click", event);
-};
+// Click handlers
+const overlayClick = (event: MouseEvent) => {
+  emit('overlay-click', event)
+}
+</script>
 
-const styleStore = useStyleStore();
+<script lang="ts">
+export default { name: 'OverlayLayer' }
 </script>
 
 <template>
@@ -37,7 +41,7 @@ const styleStore = useStyleStore();
       >
         <div
           class="absolute inset-0 bg-gradient-to-tr opacity-90 dark:from-gray-700 dark:via-gray-900 dark:to-gray-700"
-          :class="styleStore.overlayStyle"
+          :class="overlayStyle"
           @click="overlayClick"
         />
       </transition>

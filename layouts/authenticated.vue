@@ -1,80 +1,83 @@
 <script setup lang="ts">
-import { mdiForwardburger, mdiBackburger, mdiMenu } from "@mdi/js";
-import menuAside from "~/configs/menuAside.js";
-import menuNavBar from "~/configs/menuNavBar.js";
-import { useMainStore } from "~/stores/main.js";
-import { useLayoutStore } from "~/stores/layout.js";
-import { useStyleStore } from "~/stores/style.js";
+import { mdiForwardburger, mdiBackburger, mdiMenu } from '@mdi/js'
+import menuAside from '~/data/menuAside'
+import menuNavBar from '~/data/menuNavBar'
+import { useMainStore } from '~/stores/main'
+import { useLayoutStore } from '~/stores/layout'
+import { useStyleStore } from '~/stores/style'
 
-useMainStore().setUser({
-  name: "John Doe",
-  email: "john@example.com",
+// Styles
+const layoutAsidePadding = 'xl:pl-60'
+
+// Stores
+const { setUser } = useMainStore()
+
+const layoutStore = useLayoutStore()
+const { toggleAsideLg, toggleAsideMobile } = layoutStore
+const { isAsideLgActive, isAsideMobileExpanded } = storeToRefs(layoutStore)
+
+const styleStore = useStyleStore()
+const { setDarkMode } = styleStore
+const { darkMode } = storeToRefs(styleStore)
+
+// Set example User for demo purposes
+setUser({
+  name: 'John Doe',
+  email: 'john@example.com',
   avatar:
-    "https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93",
-});
+    'https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93',
+})
 
-const layoutAsidePadding = "xl:pl-60";
-
-const styleStore = useStyleStore();
-
-const layoutStore = useLayoutStore();
-
-const router = useRouter();
-
+// Togggle asides on route change
+const router = useRouter()
 router.beforeEach(() => {
-  layoutStore.isAsideMobileExpanded = false;
-  layoutStore.isAsideLgActive = false;
-});
+  toggleAsideLg(false)
+  toggleAsideMobile(false)
+})
 
-const menuClick = (event, item) => {
+// Click Handlers
+const menuClick = (_event: MouseEvent, item: any) => {
   if (item.isToggleLightDark) {
-    styleStore.setDarkMode();
+    setDarkMode()
   }
 
   if (item.isLogout) {
-    //
+    useRouter().push('/')
   }
-};
+}
 </script>
 
 <template>
   <div
     :class="{
-      dark: styleStore.darkMode,
-      'overflow-hidden lg:overflow-visible': layoutStore.isAsideMobileExpanded,
+      dark: darkMode,
+      'overflow-hidden lg:overflow-visible': isAsideMobileExpanded,
     }"
   >
     <div
-      :class="[
-        layoutAsidePadding,
-        { 'ml-60 lg:ml-0': layoutStore.isAsideMobileExpanded },
-      ]"
+      :class="[layoutAsidePadding, { 'ml-60 lg:ml-0': isAsideMobileExpanded }]"
       class="w-screen min-h-screen pt-14 transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100"
     >
       <NavBar
         :menu="menuNavBar"
         :class="[
           layoutAsidePadding,
-          { 'ml-60 lg:ml-0': layoutStore.isAsideMobileExpanded },
+          { 'ml-60 lg:ml-0': isAsideMobileExpanded },
         ]"
         @menu-click="menuClick"
       >
         <NavBarItemPlain
           display="flex lg:hidden"
-          @click.prevent="layoutStore.asideMobileToggle()"
+          @click.prevent="toggleAsideMobile()"
         >
           <BaseIcon
-            :path="
-              layoutStore.isAsideMobileExpanded
-                ? mdiBackburger
-                : mdiForwardburger
-            "
+            :path="isAsideMobileExpanded ? mdiBackburger : mdiForwardburger"
             size="24"
           />
         </NavBarItemPlain>
         <NavBarItemPlain
           display="hidden lg:flex xl:hidden"
-          @click.prevent="layoutStore.isAsideLgActive = true"
+          @click.prevent="isAsideLgActive = true"
         >
           <BaseIcon :path="mdiMenu" size="24" />
         </NavBarItemPlain>
