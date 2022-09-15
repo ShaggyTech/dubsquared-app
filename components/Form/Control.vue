@@ -12,7 +12,7 @@ export interface Props {
   icon?: string
   options?: Record<string, any>
   type?: string
-  modelValue?: string | number | string[] | undefined
+  modelValue?: any
   required?: boolean
   borderless?: boolean
   transparent?: boolean

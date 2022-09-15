@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { mdiCog } from '@mdi/js'
-import type { Colors, TrendType } from '~/types'
+import type { TrendType } from '~/types'
 
 export interface Props {
   number?: number
@@ -8,7 +8,7 @@ export interface Props {
   prefix?: string
   suffix?: string
   label?: string
-  color?: Colors
+  color?: string
   trend?: string
   trendType?: TrendType
 }
