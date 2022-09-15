@@ -17,7 +17,7 @@ definePageMeta({
 
 // Stores
 const mainStore = useMainStore()
-const { transactionHistory, clients } = storeToRefs(mainStore)
+const { transactions, clients } = storeToRefs(mainStore)
 
 // Data
 const chartData = ref<ChartData>()
@@ -28,8 +28,10 @@ const fillChartData = () => {
 }
 
 // Computed
-const clientBarItems = computed(() => clients.value.slice(0, 4))
-const transactionBarItems = computed(() => transactionHistory.value)
+const clientBarItems = computed(() => {
+  if (clients.value) return clients.value.slice(0, 4)
+})
+const transactionBarItems = computed(() => transactions.value)
 
 // Lifecycle
 onMounted(() => {

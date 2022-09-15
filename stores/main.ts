@@ -10,79 +10,11 @@ export const useMainStore = defineStore('main', () => {
   const userAvatar = ref<string>()
   const isFieldFocusRegistered = ref<boolean>(false)
 
-  const clients = ref<DataSampleClientList>([
-    {
-      id: 1,
-      avatar: 'https://avatars.dicebear.com/v2/gridy/Howell-Hand.svg',
-      login: 'percy64',
-      name: 'Howell Hand',
-      company: 'Kiehn-Green',
-      city: 'Emelyside',
-      progress: 70,
-      created: 'Mar 3, 2021',
-    },
-    {
-      id: 2,
-      avatar: 'https://avatars.dicebear.com/v2/gridy/Hope-Howe.svg',
-      login: 'dare.concepcion',
-      name: 'Hope Howe',
-      company: 'Nolan Inc',
-      city: 'Paristown',
-      progress: 68,
-      created: 'Dec 1, 2021',
-    },
-    {
-      id: 3,
-      avatar: 'https://avatars.dicebear.com/v2/gridy/Nelson-Jerde.svg',
-      login: 'geovanni.kessler',
-      name: 'Nelson Jerde',
-      company: 'Nitzsche LLC',
-      city: 'Jailynbury',
-      progress: 49,
-      created: 'May 18, 2021',
-    },
-    {
-      id: 4,
-      avatar: 'https://avatars.dicebear.com/v2/gridy/Kim-Weimann.svg',
-      login: 'macejkovic.dashawn',
-      name: 'Kim Weimann',
-      company: 'Brown-Lueilwitz',
-      city: 'New Emie',
-      progress: 38,
-      created: 'May 4, 2021',
-    },
-  ])
-
-  const transactionHistory = ref<DataSampleTransactionHistory>([
-    {
-      amount: 375.53,
-      name: 'Home Loan Account',
-      date: '3 days ago',
-      type: 'deposit',
-      business: 'Turcotte',
-    },
-    {
-      amount: 470.26,
-      name: 'Savings Account',
-      date: '3 days ago',
-      type: 'payment',
-      business: 'Murazik - Graham',
-    },
-    {
-      amount: 971.34,
-      name: 'Checking Account',
-      date: '5 days ago',
-      type: 'invoice',
-      business: 'Fahey - Keebler',
-    },
-    {
-      amount: 374.63,
-      name: 'Auto Loan Account',
-      date: '7 days ago',
-      type: 'withdrawal',
-      business: 'Collier - Hintz',
-    },
-  ])
+  // for the demo, we'll use hardcoded data from ./server/api routes for clients and transactions
+  // in a real app, you would likely fetch data from a database via ./server/api routes and $fetch method
+  const { data: clients } = useFetch<DataSampleClientList>('/api/clients')
+  const { data: transactions } =
+    useFetch<DataSampleTransactionHistory>('/api/transactions')
 
   // Actions
   const setUser = ({
@@ -124,7 +56,7 @@ export const useMainStore = defineStore('main', () => {
     userAvatar,
     isFieldFocusRegistered,
     clients,
-    transactionHistory,
+    transactions,
     // actions
     setUser,
   }

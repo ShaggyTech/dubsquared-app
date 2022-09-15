@@ -2,11 +2,11 @@ import { UseStylesState } from '~/types'
 export const useStyles = (): UseStylesState => {
   const basic = {
     aside: 'bg-gray-800',
-    asideScrollbars: 'aside-scrollbars-gray',
     asideBrand: 'bg-gray-900 text-white',
     asideMenuItem: 'text-gray-300 hover:text-white',
     asideMenuItemActive: 'font-bold text-white',
     asideMenuDropdown: 'bg-gray-700/50',
+    asideScrollbars: 'aside-scrollbars-gray',
     navBarItemLabel: 'text-black',
     navBarItemLabelHover: 'hover:text-blue-500',
     navBarItemLabelActiveColor: 'text-blue-600',

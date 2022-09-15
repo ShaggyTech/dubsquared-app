@@ -23,14 +23,19 @@ const currentPage = ref(0)
 const checkedRows = ref<DataSampleClientList>([])
 
 // Computed
-const itemsPaginated = computed(() =>
-  items.value.slice(
-    perPage.value * currentPage.value,
-    perPage.value * (currentPage.value + 1)
-  )
-)
+const itemsPaginated = computed(() => {
+  if (items.value) {
+    return items.value.slice(
+      perPage.value * currentPage.value,
+      perPage.value * (currentPage.value + 1)
+    )
+  }
+})
 
-const numPages = computed(() => Math.ceil(items.value.length / perPage.value))
+const numPages = computed(() => {
+  if (items.value) return Math.ceil(items.value.length / perPage.value)
+  else return 0
+})
 
 const currentPageHuman = computed(() => currentPage.value + 1)
 
