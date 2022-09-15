@@ -10,11 +10,14 @@ import {
   mdiReload,
   mdiTrendingUp,
 } from '@mdi/js'
-import { useStyleStore } from '~/stores/style'
+import { useThemeStore } from '~/stores/theme'
 
 definePageMeta({
   layout: 'authenticated',
 })
+
+// Stores
+const { toggleLightDark } = useThemeStore()
 
 const modalOneActive = ref(false)
 const modalTwoActive = ref(false)
@@ -45,8 +48,6 @@ const pillsSmall = computed(() => pillsSettingsModel.value.includes('small'))
 const pillsIcon = computed(() =>
   pillsSettingsModel.value.includes('icon') ? mdiTrendingUp : undefined
 )
-
-const { setDarkMode } = useStyleStore()
 </script>
 
 <template>
@@ -82,7 +83,11 @@ const { setDarkMode } = useStyleStore()
         <div
           class="py-24 text-center text-gray-500 lg:py-12 dark:text-slate-400"
         >
-          <BaseButton label="Toggle" color="contrast" @click="setDarkMode()" />
+          <BaseButton
+            label="Toggle"
+            color="contrast"
+            @click="toggleLightDark()"
+          />
         </div>
       </CardBox>
     </SectionMain>

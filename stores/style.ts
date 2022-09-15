@@ -1,4 +1,4 @@
-import { darkModeKey, styleKey } from '~/data/config'
+import { styleKey } from '~/data/config'
 import type { AvailableStyles } from '~/types/styles'
 
 export const useStyleStore = defineStore('style', () => {
@@ -32,14 +32,15 @@ export const useStyleStore = defineStore('style', () => {
   const navBarItemLabelStyle = computed(
     () => styleState.value.navBarItemLabelStyle
   )
+
   const navBarItemLabelHoverStyle = computed(
     () => styleState.value.navBarItemLabelHoverStyle
   )
   const navBarItemLabelActiveColorStyle = computed(
     () => styleState.value.navBarItemLabelActiveColorStyle
   )
+
   const overlayStyle = computed(() => styleState.value.overlayStyle)
-  const darkMode = ref<boolean>(false)
 
   // Actions
   const setStyle = (styleName: AvailableStyles) => {
@@ -61,21 +62,6 @@ export const useStyleStore = defineStore('style', () => {
     }
   }
 
-  const setDarkMode = (show?: boolean | undefined) => {
-    darkMode.value = show !== undefined ? show : !darkMode.value
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(darkModeKey, darkMode.value ? '1' : '0')
-    }
-    if (typeof document !== 'undefined') {
-      document.body.classList[darkMode.value ? 'add' : 'remove'](
-        'dark-scrollbars'
-      )
-      document.documentElement.classList[darkMode.value ? 'add' : 'remove'](
-        'dark-scrollbars-compat'
-      )
-    }
-  }
-
   return {
     // State
     styleState,
@@ -90,10 +76,8 @@ export const useStyleStore = defineStore('style', () => {
     navBarItemLabelHoverStyle,
     navBarItemLabelActiveColorStyle,
     overlayStyle,
-    darkMode,
     // Actions
     setStyle,
-    setDarkMode,
   }
 })
 

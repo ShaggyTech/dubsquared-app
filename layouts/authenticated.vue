@@ -4,7 +4,8 @@ import menuAside from '~/data/menuAside'
 import menuNavBar from '~/data/menuNavBar'
 import { useMainStore } from '~/stores/main'
 import { useLayoutStore } from '~/stores/layout'
-import { useStyleStore } from '~/stores/style'
+
+import { useThemeStore } from '~/stores/theme'
 
 // Styles
 const layoutAsidePadding = 'xl:pl-60'
@@ -16,9 +17,7 @@ const layoutStore = useLayoutStore()
 const { toggleAsideLg, toggleAsideMobile } = layoutStore
 const { isAsideLgActive, isAsideMobileExpanded } = storeToRefs(layoutStore)
 
-const styleStore = useStyleStore()
-const { setDarkMode } = styleStore
-const { darkMode } = storeToRefs(styleStore)
+const { toggleLightDark } = useThemeStore()
 
 // Set example User for demo purposes
 setUser({
@@ -38,7 +37,7 @@ router.beforeEach(() => {
 // Click Handlers
 const menuClick = (_event: MouseEvent, item: any) => {
   if (item.isToggleLightDark) {
-    setDarkMode()
+    toggleLightDark()
   }
 
   if (item.isLogout) {
@@ -50,7 +49,6 @@ const menuClick = (_event: MouseEvent, item: any) => {
 <template>
   <div
     :class="{
-      dark: darkMode,
       'overflow-hidden lg:overflow-visible': isAsideMobileExpanded,
     }"
   >

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useThemeStore } from '~/stores/theme'
 import { useStyleStore } from '~/stores/style'
-import { darkModeKey, styleKey } from '~/data/config'
+import { styleKey } from '~/data/config'
 
 useHead({
   titleTemplate: (titleChunk) => {
@@ -9,7 +10,8 @@ useHead({
   },
 })
 
-const { setDarkMode, setStyle } = useStyleStore()
+const { currentTheme } = storeToRefs(useThemeStore())
+const { setStyle } = useStyleStore()
 
 const currentStyle =
   typeof localStorage !== 'undefined' && localStorage[styleKey]
@@ -17,24 +19,26 @@ const currentStyle =
     : 'basic'
 
 setStyle(currentStyle)
-
-const currentStoredDarkMode =
-  typeof localStorage !== 'undefined' && localStorage[darkModeKey] === '1'
-
-if (
-  (!currentStoredDarkMode &&
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches) ||
-  currentStoredDarkMode
-) {
-  setDarkMode(true)
-}
 </script>
 
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <Html :class="`${currentTheme === 'dark' ? 'dark' : ''}`" lang="en">
+    <Head>
+      <Meta
+        name="viewport"
+        content="width=device-width, initial-scale=1 viewport-fit=cover"
+      />
+      <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <Link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+      <Link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+      <Link rel="icon" type="image/png" href="/favicon.png" />
+    </Head>
+    <Body
+      class="antialiased transition-colors duration-300 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-nunito"
+    >
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </Body>
+  </Html>
 </template>

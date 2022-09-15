@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStyleStore } from '~/stores/style'
+import { useThemeStore } from '~/stores/theme'
 
 // Props and Emits
 export interface Props {
@@ -8,14 +8,14 @@ export interface Props {
 const props = defineProps<Props>()
 
 // Stores
-const { darkMode } = storeToRefs(useStyleStore())
+const { isDarkMode } = storeToRefs(useThemeStore())
 
 // Data
 const { gradientBgPurplePink, gradientBgDark, gradientBgPinkRed } = useColors()
 
 // Computed
 const colorClass = computed(() => {
-  if (darkMode) {
+  if (isDarkMode.value) {
     return gradientBgDark
   }
 

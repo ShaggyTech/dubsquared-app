@@ -51,7 +51,7 @@ const componentClass = computed(() => [
         isOutlined: false,
         hasHover: true,
       })
-    : `${asideMenuItemStyle} dark:text-slate-300 dark:hover:text-white`,
+    : `${asideMenuItemStyle} text-slate-200 dark:text-slate-300 dark:hover:text-white`,
 ])
 
 const hasDropdown = computed(() => !!props.item.menu)

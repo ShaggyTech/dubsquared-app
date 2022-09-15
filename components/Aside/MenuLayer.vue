@@ -2,6 +2,7 @@
 import { mdiLogout, mdiClose } from '@mdi/js'
 import { useLayoutStore } from '~/stores/layout'
 import { useStyleStore } from '~/stores/style'
+import { useThemeStore } from '~/stores/theme'
 import type { ButtonVariant, MenuAside } from '~/types'
 
 // Props and Emits
@@ -12,9 +13,11 @@ defineProps<Props>()
 const emit = defineEmits(['menu-click'])
 
 // Stores
-const { asideStyle, asideBrandStyle, asideScrollbarsStyle, darkMode } =
-  storeToRefs(useStyleStore())
+const { asideStyle, asideBrandStyle, asideScrollbarsStyle } = storeToRefs(
+  useStyleStore()
+)
 const { toggleAsideLg } = useLayoutStore()
+const { isDarkMode } = storeToRefs(useThemeStore())
 
 // Computed
 const logoutItem = computed(() => ({
@@ -60,7 +63,7 @@ export default { name: 'AsideMenuLayer' }
         </button>
       </div>
       <div
-        :class="darkMode ? 'aside-scrollbars-[slate]' : asideScrollbarsStyle"
+        :class="isDarkMode ? 'aside-scrollbars-[slate]' : asideScrollbarsStyle"
         class="flex-1 overflow-x-hidden overflow-y-auto"
       >
         <AsideMenuList :menu="menu" @menu-click="menuClick" />
