@@ -3,6 +3,8 @@ export const useLayoutStore = defineStore('layout', () => {
   const isAsideMobileExpanded = ref<boolean>(false)
   const isAsideLgActive = ref<boolean>(false)
 
+  const isNavBarMobileExpanded = ref<boolean>(false)
+
   // Actions
   const toggleAsideMobile = (show?: boolean) => {
     if (typeof show === 'boolean') {
@@ -20,13 +22,23 @@ export const useLayoutStore = defineStore('layout', () => {
     }
   }
 
+  const toggleNavBarMobile = (show?: boolean) => {
+    if (typeof show === 'boolean') {
+      isNavBarMobileExpanded.value = show
+    } else {
+      isNavBarMobileExpanded.value = !isNavBarMobileExpanded.value
+    }
+  }
+
   return {
     // State
     isAsideMobileExpanded,
     isAsideLgActive,
+    isNavBarMobileExpanded,
     // Actions
     toggleAsideMobile,
     toggleAsideLg,
+    toggleNavBarMobile,
   }
 })
 
